@@ -1,8 +1,6 @@
 <template>
   <div id="app">
     <router-view class="view"></router-view>
-    <router-view class="view" name="subject"></router-view>
-    <router-view class="view" name="search"></router-view>
   </div>
 </template>
 
@@ -58,4 +56,10 @@ a {
   background: #fff;
   border-bottom: 0.1rem solid #f3f3f3;
 }
+.icon {
+      width: 1em; height: 1em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+   }
 </style>
