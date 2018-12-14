@@ -10,10 +10,20 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {//axios 跨域处理
+      '/api':{
+        target:'https://api.douban.com',
+        changeOrigin:true,//允许跨域
+        pathRewrite:{
+          '^/api':''
+        }
+      }
+
+    },
 
     // Various Dev Server settings
     host: '192.168.0.115', // can be overwritten by process.env.HOST
+    // host: 'localhost', // can be overwritten by process.env.HOST
     port: 8088, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,

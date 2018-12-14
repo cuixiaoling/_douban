@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import PagesView from '@/pages/PagesView'
 import HomeView from '@/pages/HomeView'
 import BookView from '@/pages/BookView'
+import test from '@/pages/test'
 
 Vue.use(Router)
 
@@ -11,6 +12,10 @@ export default new Router({
     {
       path:'/',
       redirect:'/pages/'
+    },
+    {
+      path:'/test',
+      component: test
     },
     /*嵌套路由*/
     {

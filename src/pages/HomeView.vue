@@ -12,29 +12,70 @@
     </div>
     <!-- 列表内容 -->
     <div class="list">
-      <div class="thumbnail" v-for="item in 4">
-        <div class="unit">
-         <div>
-           <h3>西方绘画500年——东京富士美术馆馆藏作品展</h3>
-           <p>展览信息展览时间：2018年10月23日 – 2018年12</p>
-         </div>
-         <img src="https://img3.doubanio.com/pview/event_poster/hlarge/public/8f541cd80791d1e.jpg"></img>
-       </div>
-        <p>展览</p>
-      </div>
-      
+      <a :href="item.adapt_url" v-for="(item,index) in list" :key="index">
+        <div class="thumbnail">
+          <div class="unit">
+            <div>
+              <h3>{{item.title}}</h3>
+              <p>展览信息展览时间：{{item.begin_time}} – {{item.end_time}}</p>
+            </div>
+            <img :src=item.image></img>
+          </div>
+          <div class="unit" style="margin-top:1rem ">
+            <p>{{item.category_name}}</p>
+            <p>{{'本活动来自栏目：'+item.subcategory_name}}</p>
+          </div>
+        </div>
+      </a>
     </div>
+    <infinite-loading :on-infinite="onInfinite" ref="infiniteLoading"></infinite-loading>
   </div>
  
 </template>
 
 <script>
+import axios from 'axios'
+import api from '@/api/index'
+import InfiniteLoading from 'vue-infinite-loading';
+console.log(api)
 export default {
   name: 'HelloWorld',
+  components:{
+    InfiniteLoading
+  },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      list:[],
+      start:0,
+      count:3,
+      total:0,
     }
+  },
+  methods:{
+    onInfinite() {
+      setTimeout(() => {
+        this.start = this.start+3
+        this.moreList()
+        this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded');
+      }, 1000);
+      },
+    moreList(){
+       axios.get(`/api/v2/event/list?loc=108288&start=${this.start}&count=3`).then((e)=>{
+       this.list =[ ...this.list,...e.data.events]
+       this.total= e.data.total
+       console.log(this.list)
+      })
+    },
+    more(){
+      this.start = this.start+3
+      this.moreList()
+    }
+  },
+  created(){
+    // this.moreList();
+    
+
   }
 }
 </script>
@@ -66,6 +107,7 @@ export default {
   text-overflow: ellipsis;
   white-space: nowrap;
   word-wrap: normal;
+  cursor: pointer;
 }
 .thumbnail{
   margin-left:1.8rem;
@@ -74,6 +116,7 @@ export default {
 }
 .thumbnail .unit{
   display: flex;
+  justify-content: space-between;
 
 }
 .thumbnail h3{
