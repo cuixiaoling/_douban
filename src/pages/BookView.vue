@@ -1,3 +1,3 @@
 <template>
-    <div>000</div>
+    <div style="margin-top: 4.8rem;">000</div>
 </template>
