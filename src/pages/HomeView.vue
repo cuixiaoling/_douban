@@ -55,8 +55,8 @@ export default {
   methods:{
     onInfinite() {
       setTimeout(() => {
-        this.start = this.start+3
         this.moreList()
+        this.start = this.start+3
         this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded');
       }, 1000);
       },
@@ -67,10 +67,6 @@ export default {
        console.log(this.list)
       })
     },
-    more(){
-      this.start = this.start+3
-      this.moreList()
-    }
   },
   created(){
     // this.moreList();

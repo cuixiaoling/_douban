@@ -2,12 +2,12 @@
     <div class="page_view">
     	<router-view></router-view>
     	<div class="content">
-    	  <router-link :to="{path:'/'}"class="left tab1"><span>豆瓣</span></router-link>
+    	  <router-link :to="{path:'/'}" class="left tab1"><span>豆瓣</span></router-link>
     	  <div class="right">
     	    <router-link :to="{name:'MovieView'}" class="tab2">电影</router-link>
     	    <router-link :to="{name:'BookView'}" class="tab3">图书</router-link>
     	    <router-link :to="{name:'StatusView'}" class="tab4">广播</router-link>
-    	    <router-link :to="{name:'GroupView'}"class="tab5">小组</router-link>
+    	    <router-link :to="{name:'GroupView'}" class="tab5">小组</router-link>
     	    <span class="tab6">    
     	      <svg class="icon" aria-hidden="true">
     	        <use xlink:href="#icon-sousuo"></use>

@@ -1,2 +1,0 @@
-export const ADD_UAERINFO = 'ADD_UAERINFO'
-export const DEL_USERINFO = 'DEL_USERINFO'

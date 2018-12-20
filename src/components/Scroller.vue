@@ -5,7 +5,7 @@
             <a href="#">更多</a>
        </div>
        <ul class="hasCover" v-if="type=='hasCover'">
-           <li v-for="(item,index) in 18" :key="index">
+           <li v-for="(item,index) in items" :key="index">
                <a href="#">
                 <img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2541280047.jpg" alt="">
                 <span class="title">海王</span>
@@ -26,7 +26,7 @@ export default {
 
         }
     },
-    props:['title','type'],
+    props:['title','type','items'],
     methods:{
 
     },
