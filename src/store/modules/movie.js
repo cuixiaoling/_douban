@@ -70,14 +70,30 @@ const mutations={
 }
 const actions = {
    getMovie({commit}){
-       axios.get('/api/v2/movie/in_theaters?count=8').then((res) => {
-        console.log(res,'列表')
+        axios.get('/api/v2/movie/in_theaters?count=8').then((res) => {
+            console.log(res,'hotMovies列表')
            commit({
                type: 'getMovie',
                tag: 'hotMovies',
                res: res.data.subjects
            })
        })
+        axios.get('/api/v2/movie/coming_soon?count=8').then((res)=>{
+            console.log(res,'newMovies列表')
+            commit({
+                type:'getMovie',
+                tag:'newMovies',
+                res: res.data.subjects
+            })
+        })
+        axios.get('/api/v2/movie/top250?count=8').then((res) => {
+            console.log(res, 'topMovies列表')
+            commit({
+                type: 'getMovie',
+                tag: 'topMovies',
+                res: res.data.subjects
+            })
+        })
    }
 }
 export default {

@@ -1,9 +1,9 @@
 <template>
     <div class='movie-view'>
-        <scroller title="影院热映" type="hasCover" items='hotMovies'/>
-        <scroller title="免费在线观影" items='hotMovies' type="hasCover"/>
-        <scroller title="新片速递" items='hotMovies' type="hasCover"/>
-        <scroller title="发现好电影" items='hotMovies' type="onlyString"/>
+        <scroller title="影院热映" :items='hotMovies' type="hasCover" />
+        <scroller title="免费在线观影" :items='topMovies' type="hasCover"/>
+        <scroller title="新片速递" :items='newMovies' type="hasCover"/>
+        <scroller title="发现好电影" :items='movieTags' type="onlyString"/>
         <types />
         <download-app />
     </div>
@@ -36,10 +36,11 @@ export default {
         getMovie: function () {
             this.$store.dispatch('getMovie')
         }
-        },
+    },
     created () {
         // Getting movies data on created
-        this.getMovie()
+        this.getMovie();
+        console.log(this.hotMovies,'0000')
     }
     
 }
